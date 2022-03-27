@@ -10,8 +10,62 @@ exports.listAllVoos = async (req, res) => {
   res.status(200).send(response.rows);
 };
 
+exports.listClientes = async (req, res) => {
+  const response = await db.query("SELECT * FROM clientes");
+  res.status(200).send(response.rows);
+};
 
+exports.findVooByCia = async (req, res) => {
+  const cia = parseInt(req.params.cia);
+  const response = await db.query("SELECT * FROM voos WHERE cia = $1", [
+    cia,
+  ]);
+  res.status(200).send(response.rows);
+};
 
+exports.createCliente = async (req, res) => {
+  const {
+    clienteNome,
+    clienteEmail,
+    clienteSexo,
+    clienteDtNasc,
+    clienteCpf,
+    clientewhats,
+    clienteCep,
+    clienteEndereco,
+  } = req.body;
+  console.log(req.body);
+  console.log(clienteNome);
+  const response = await db.query(
+    "INSERT INTO clientes (nome, email, sexo, nascimento, cpf, whatsapp, cep, endereco) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+    [
+      clienteNome,
+      clienteEmail,
+      clienteSexo,
+      clienteDtNasc,
+      clienteCpf,
+      clientewhats,
+      clienteCep,
+      clienteEndereco, 
+    ]
+  );
+
+  res.status(201).send({
+    message: "Cliente inserido com sucesso",
+    body: {
+      cliente: {
+        clienteNome,
+        clienteEmail,
+        clienteSexo,
+        clienteDtNasc,
+        clienteCpf,
+        clientewhats,
+        clienteCep,
+        clienteEndereco, 
+      },
+    },
+  });
+};
  /* 
  
 exports.listAllVoos = async (req, res) => {

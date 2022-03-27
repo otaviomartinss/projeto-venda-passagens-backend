@@ -8,10 +8,17 @@ const voosController = require("../controllers/voosController");
 
 // Definindo as rotas do CRUD
 
-router.post("/clientes", clienteController.createCliente);
-router.put("/clientes", clienteController.updateCliente);
-router.get("/voos", voosController.listAllVoos);
-router.get("/clientes/:id", clienteController.findClienteById);
-router.delete("/clientes/:id", clienteController.removeClienteById);
+//router.post("/clientes", clienteController.createCliente);
+//router.put("/clientes", clienteController.updateCliente);
+//router.get("/clientes/:id", clienteController.findClienteById);
+//router.delete("/clientes/:id", clienteController.removeClienteById);
+
+
+router.get("/voos", voosController.listAllVoos); //get db todos os voos
+router.get("/clientes", voosController.listClientes);
+router.post("/clientes", voosController.createCliente);
+
+
+
 
 module.exports = router;
