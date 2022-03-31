@@ -15,7 +15,7 @@ router.get("/api", (req, res) => {
 
 router.get("/", (req, res) => {
   console.log("get /");
-  res.status(200).send("Aeeee");
+  res.status(200).send("SERVIDOR ESTÁ FUNCIONANDO");
 });
 
 module.exports = router;

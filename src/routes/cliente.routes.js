@@ -3,7 +3,6 @@
  */
 
 const router = require("express-promise-router")();
-const clienteController = require("../controllers/cliente.controller");
 const voosController = require("../controllers/voosController");
 
 // Definindo as rotas do CRUD
@@ -15,8 +14,10 @@ const voosController = require("../controllers/voosController");
 
 
 router.get("/voos", voosController.listAllVoos); //get db todos os voos
-router.get("/clientes", voosController.listClientes);
-router.post("/clientes", voosController.createCliente);
+//router.get("/voos/voo", voosController.listFilterVoos); //get db filtra os voos
+router.get("/voos/:de/:para", voosController.listFilterVoos); //get db filtra os voos
+router.get("/clientes", voosController.listClientes); //get todos os clientes
+router.post("/clientes", voosController.createCliente); //cadastra cliente
 
 
 
