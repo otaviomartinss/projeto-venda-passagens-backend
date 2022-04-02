@@ -34,6 +34,38 @@ exports.listClientes = async (req, res) => {
   res.status(200).send(response.rows);
 }; */
 
+
+exports.createCompra = async (req, res) => {
+  const {
+    compraVoo,
+    compraTotal,
+    compraIda,
+    compraVolta,
+  } = req.body;
+  console.log(req.body);
+  const response = await db.query(
+    "INSERT INTO compra (voo, total, ida, volta) VALUES ($1, $2, $3, $4)",
+    [
+      compraVoo,
+      compraTotal,
+      compraIda,
+      compraVolta,
+    ]
+  );
+
+  res.status(201).send({
+    message: "Compra inserida com sucesso",
+    body: {
+      compra: {
+        compraVoo,
+        compraTotal,
+        compraIda,
+        compraVolta,
+      },
+    },
+  });
+}; 
+
 exports.createCliente = async (req, res) => {
   const {
     clienteNome,

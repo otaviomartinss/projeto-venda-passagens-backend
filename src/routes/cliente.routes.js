@@ -14,6 +14,7 @@ const voosController = require("../controllers/voosController");
 
 
 router.get("/voos", voosController.listAllVoos); //get db todos os voos
+router.post("/compras", voosController.createCompra); //get db todos os voos
 //router.get("/voos/voo", voosController.listFilterVoos); //get db filtra os voos
 router.get("/voos/:de/:para", voosController.listFilterVoos); //get db filtra os voos
 router.get("/clientes", voosController.listClientes); //get todos os clientes
