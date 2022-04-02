@@ -10,7 +10,6 @@ dotenv.config();
 // conexão com o banco de dados
 console.log(process.env.DATABASE_URL);
 const pool = new Pool({
-  // connectionString: 'postgres://postgres:banco@localhost:5432/ufu_dev',
   connectionString: process.env.DATABASE_URL,
 });
 
